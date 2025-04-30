@@ -1,0 +1,21 @@
+{
+  "required" : [ "Email" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "CaseNumber" : {
+      "title" : "CaseNumber",
+      "description" : "Use this Case Number as input for flow",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Email" : {
+      "title" : "Email",
+      "description" : "Use this email as input for flow",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

@@ -1,0 +1,28 @@
+{
+  "required" : [ "Input:RetrieverIdOrName", "Input:Query" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Input:RetrieverIdOrName" : {
+      "title" : "RetrieverIdOrName",
+      "description" : "This is fixed value , that is Default_Crime_Dataset_Bangalore_csv_Retriever_1Cx_Krh2ff59a4e",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Input:Query" : {
+      "title" : "Query",
+      "description" : "Use this input as question ",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "citationMode" : {
+      "title" : "Citation Mode",
+      "description" : "Select Citation Mode",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

@@ -1,0 +1,63 @@
+{
+  "required" : [ "Description", "Email", "FirstName", "LastName", "PinCode" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "AccountId" : {
+      "title" : "AccountId",
+      "description" : "No need to ask user for this info, this is optional",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "ContactId" : {
+      "title" : "ContactId",
+      "description" : "No need to ask user for this info, this is optional",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Description" : {
+      "title" : "Description",
+      "description" : "User need to provide incident description what they are reporting",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "Email" : {
+      "title" : "Email",
+      "description" : "User need to provide email address",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "FirstName" : {
+      "title" : "FirstName",
+      "description" : "This is user first name",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "LastName" : {
+      "title" : "LastName",
+      "description" : "This is user last name",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "PinCode" : {
+      "title" : "PinCode",
+      "description" : "This is user location",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Subject" : {
+      "title" : "Subject",
+      "description" : "Generate random subjects from description provided by user",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}
