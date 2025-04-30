@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MessagingChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <automatedResponses>
+        <autoResponseContentType>TextResponse</autoResponseContentType>
+        <language>en_US</language>
+        <response>You&apos;ve opted out of receiving messages from us, so we won&apos;t contact you again.</response>
+        <type>OptOutConfirmation</type>
+    </automatedResponses>
+    <automatedResponses>
+        <autoResponseContentType>TextResponse</autoResponseContentType>
+        <language>en_US</language>
+        <response>Text STOP to opt out of further messages.</response>
+        <type>HelpResponse</type>
+    </automatedResponses>
+    <automatedResponses>
+        <autoResponseContentType>TextResponse</autoResponseContentType>
+        <response>Hi, Welcome to the Sahayak
+How we can help you?</response>
+        <type>AgentEngagedResponse</type>
+    </automatedResponses>
+    <automatedResponses>
+        <autoResponseContentType>TextResponse</autoResponseContentType>
+        <response>Thank you for reaching us, Hope you have a happy and safe day.</response>
+        <type>AgentEndEngagementResponse</type>
+    </automatedResponses>
+    <channelUsages>
+        <channelConsentType>ImplicitOptIn</channelConsentType>
+        <deploymentType>DigitalEngagementConversation</deploymentType>
+    </channelUsages>
+    <countryCode>US</countryCode>
+    <masterLabel>Sahayak</masterLabel>
+    <messagingChannelType>Facebook</messagingChannelType>
+    <messagingKeywords>
+        <keyword>cancel</keyword>
+        <keyword>stopall</keyword>
+        <keyword>stop</keyword>
+        <keyword>unsubscribe</keyword>
+        <keyword>end</keyword>
+        <keyword>quit</keyword>
+        <keywordType>OptOut</keywordType>
+        <language>en_US</language>
+    </messagingKeywords>
+    <messagingKeywords>
+        <keyword>help</keyword>
+        <keywordType>Help</keywordType>
+        <language>en_US</language>
+    </messagingKeywords>
+    <platformKey>592916430579964</platformKey>
+    <sessionHandlerFlow>MessengerOmniFlow</sessionHandlerFlow>
+    <sessionHandlerQueue>Facebook_Messenger</sessionHandlerQueue>
+    <sessionHandlerType>Flow</sessionHandlerType>
+</MessagingChannel>

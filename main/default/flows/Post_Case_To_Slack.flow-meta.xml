@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Sends a Slack message to the specific channel when a Case is created.</description>
+        <name>Send_Slack_Message</name>
+        <label>Send Slack Message</label>
+        <locationX>716</locationX>
+        <locationY>324</locationY>
+        <actionName>slackPostMessage</actionName>
+        <actionType>slackPostMessage</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>slackAppIdForToken</name>
+            <value>
+                <stringValue>A01RDL2NJAH</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackWorkspaceIdForToken</name>
+            <value>
+                <stringValue>T08QG2JMUAD</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackConversationId</name>
+            <value>
+                <stringValue>C08QG2JSN65</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>slackMessage</name>
+            <value>
+                <elementReference>SlackMessageToPost</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>$Record.SuppliedName</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>slackPostMessage</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Post Case To Slack</description>
+    <environments>Default</environments>
+    <interviewLabel>Post Case To Slack {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Post Case To Slack</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>458</locationX>
+        <locationY>48</locationY>
+        <object>Case</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <scheduledPaths>
+            <name>Case_is_Created</name>
+            <connector>
+                <targetReference>Send_Slack_Message</targetReference>
+            </connector>
+            <label>Case is Created</label>
+            <offsetNumber>1</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <recordField>CreatedDate</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <description>Slack Message To Post</description>
+        <name>SlackMessageToPost</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>﻿A new Case has been registered. The details are as below:
+*Name of the Complainant:* {!$Record.ContactEmail}
+*Complaint Raised On:* {!$Record.CreatedDate}
+*Complaint Type:* {!$Record.Crime_Type__c}
+*Complaint Description:* {!$Record.Description}
+*Case Record:* https://orgfarm-e0b6c5e534.lightning.force.com/lightning/r/Case/{!$Record.Id}/view
+Time for Action!!</text>
+    </textTemplates>
+</Flow>

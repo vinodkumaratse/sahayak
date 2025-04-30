@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Assign records from previous query</description>
+        <name>Assign_Data</name>
+        <label>Assign Data</label>
+        <locationX>176</locationX>
+        <locationY>242</locationY>
+        <assignmentItems>
+            <assignToReference>Filtered_Crime_Date</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+    </assignments>
+    <environments>Default</environments>
+    <interviewLabel>Answer from Crime Data {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Answer from Crime Data</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Query all Crime Data based on Inputs provided</description>
+        <name>Get_Crime_Data</name>
+        <label>Get Crime Data</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Data</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>City__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>City</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Crime_Description__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>CrimeType</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Station_Name__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Station_Name</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Crime_Dataset_Bangalorecsv__dlm</object>
+        <queriedFields>Report_Number__c</queriedFields>
+        <queriedFields>Address__c</queriedFields>
+        <queriedFields>City__c</queriedFields>
+        <queriedFields>Case_Closed__c</queriedFields>
+        <queriedFields>Crime_Description__c</queriedFields>
+        <queriedFields>Contact__c</queriedFields>
+        <queriedFields>Date_Case_Closed__c</queriedFields>
+        <queriedFields>Police_Deployed__c</queriedFields>
+        <queriedFields>Victim_Age__c</queriedFields>
+        <queriedFields>Weapon_Used__c</queriedFields>
+        <queriedFields>Zone__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Crime_Data</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <name>City</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>Bangalore</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Type of Crime like Theft or Murder</description>
+        <name>CrimeType</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>This is the output after running query with filters</description>
+        <name>Filtered_Crime_Date</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>Police Station Name</description>
+        <name>Station_Name</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Victim Age</description>
+        <name>Vicitim_Age</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Victim Age</description>
+        <name>Victim_Age</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

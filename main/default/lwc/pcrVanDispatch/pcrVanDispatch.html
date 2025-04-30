@@ -1,0 +1,35 @@
+<template>
+    <lightning-card title="PCR Van Dispatch" icon-name="standard:location">
+        <div class="slds-m-around_medium">
+            <lightning-combobox label="Select Van" placeholder="Choose a van" options={vanOptions} value={selectedVan}
+                onchange={handleVanChange}>
+            </lightning-combobox>
+            <lightning-input label="Search Location" placeholder="Type to search location" value={selectedLocationValue}
+                onchange={handleLocationSearch}>
+            </lightning-input>
+            <template if:true={locationOptions}>
+                <ul class="slds-listbox slds-listbox_vertical slds-dropdown_length-5" role="listbox">
+                    <template for:each={locationOptions} for:item="option">
+                        <li key={option.value} class="slds-listbox__item" role="presentation" data-value={option.label}
+                            onclick={handleLocationSelect}>
+                            <div class="slds-listbox__option slds-listbox__option_plain" role="option">
+                                {option.label}
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </template>
+            <lightning-button class="button-gap" label="Dispatch this van" variant="brand" onclick={handleDispatch}
+                disabled={isDispatchDisabled}>
+            </lightning-button>
+        </div>
+        <lightning-card>
+            <div class="slds-m-around_medium">
+                <lightning-map map-markers={mapMarkers} zoom-level="10" center={center} list-view="visible">
+                </lightning-map>
+            </div>
+            <lightning-datatable key-field="id" data={updatedData} columns={columns} hide-checkbox-column>
+            </lightning-datatable>
+        </lightning-card>
+    </lightning-card>
+</template>

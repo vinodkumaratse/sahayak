@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Add all crime data to the prompt instructions</description>
+        <name>Send_Crime_Data_to_Prompt_Instructions</name>
+        <elementSubtype>AddPromptInstructions</elementSubtype>
+        <label>Send Crime Data to Prompt Instructions</label>
+        <locationX>264</locationX>
+        <locationY>350</locationY>
+        <assignmentItems>
+            <assignToReference>$Output.Prompt</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>Analyze below details about Crime happened in an area &amp; Police Station details &amp; Answer User Query.
+Address of Police Station where Crime Registered : {!Loop_Crime_Data.Address__c}
+Case Resolved : {!Loop_Crime_Data.Case_Closed__c}
+Crime City : {!Loop_Crime_Data.City__c}
+Crime Code: {!Loop_Crime_Data.Crime_Code__c}Crime Description : {!Loop_Crime_Data.Crime_Description__c}
+Crime Type: {!Loop_Crime_Data.Crime_Domain__c}Case Resolved On: {!Loop_Crime_Data.Date_Case_Closed__c}Crime 
+ Date: {!Loop_Crime_Data.Date_of_Occurrence__c}FIR Date : {!Loop_Crime_Data.Date_Reported__c}Police Station Latitude: {!Loop_Crime_Data.Latitude__c}Police Station Longitude: {!Loop_Crime_Data.Longitude__c}No Police Deployed: {!Loop_Crime_Data.Police_Deployed__c}Region: {!Loop_Crime_Data.Region__c}FIR #: {!Loop_Crime_Data.Report_Number__c}Crime Time: {!Loop_Crime_Data.Time_of_Occurrence__c}Victim 
+ Age: {!Loop_Crime_Data.Victim_Age__c}Victim gender: {!Loop_Crime_Data.Victim_Gender__c}Weapon Used: {!Loop_Crime_Data.Weapon_Used__c}Station Zone: {!Loop_Crime_Data.Zone__c}
+</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Crime_Data</targetReference>
+        </connector>
+    </assignments>
+    <environments>Default</environments>
+    <interviewLabel>Get Crime Data {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Get Crime Data</label>
+    <loops>
+        <description>Loop through the collection of crime data</description>
+        <name>Loop_Crime_Data</name>
+        <label>Loop Crime Data</label>
+        <locationX>176</locationX>
+        <locationY>242</locationY>
+        <collectionReference>Get_Crime_Data</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Send_Crime_Data_to_Prompt_Instructions</targetReference>
+        </nextValueConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>PromptFlow</processType>
+    <recordLookups>
+        <name>Get_Crime_Data</name>
+        <label>Get Crime Data</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Crime_Data</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>City__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>City</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Crime_Description__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Crime_Name</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Date_Reported__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Date_Reported</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Case_Closed__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Case_Closed</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Zone__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Zone</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Weapon_Used__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Weapon_Used</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Victim_Age__c</field>
+            <operator>EqualTo</operator>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <limit>
+            <numberValue>300.0</numberValue>
+        </limit>
+        <object>Crime_Dataset_Bangalorecsv__dlm</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Crime_Data</targetReference>
+        </connector>
+        <triggerType>Capability</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Yes or NO</description>
+        <name>Case_Closed</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>City</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>Bangalore</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>Crime_Code</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Name or Type of Crime</description>
+        <name>Crime_Name</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Case reported on this date</description>
+        <name>Date_Reported</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Victim_Age</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Victim_Gender</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Weapon_Used</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Zone</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Police_Station__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Lookup from PCR Van to Police Station to indicate the location</description>
+    <label>Police Station</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>PCR Vans</relationshipLabel>
+    <relationshipName>PCR_Vans</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
