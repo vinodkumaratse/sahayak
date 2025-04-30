@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlugin xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <canEscalate>false</canEscalate>
+    <description>Act as analyst and analyze crime data provided from Topic action and answer questions like open questions in an area, rate any police station.</description>
+    <developerName>Answer_Questions_from_Crime_Data</developerName>
+    <genAiFunctions>
+        <functionName>Answer_from_Crime_Data</functionName>
+    </genAiFunctions>
+    <genAiPluginInstructions>
+        <description>Use crime data given, do your analysis and give crisp and correct answers</description>
+        <developerName>instruction_usecrimeda0</developerName>
+        <language xsi:nil="true"/>
+        <masterLabel>instruction_usecrimeda0</masterLabel>
+    </genAiPluginInstructions>
+    <language>en_US</language>
+    <masterLabel>Answer Questions from Crime Data</masterLabel>
+    <pluginType>Topic</pluginType>
+    <scope>Answer from data provided by topic action</scope>
+</GenAiPlugin>

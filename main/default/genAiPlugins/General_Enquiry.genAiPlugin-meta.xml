@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlugin xmlns="http://soap.sforce.com/2006/04/metadata">
+    <canEscalate>false</canEscalate>
+    <description>Use this topic to answer generic queries from citizens like FIR/Case status , their passport status, report any incident</description>
+    <developerName>General_Enquiry</developerName>
+    <genAiFunctions>
+        <functionName>Get_Case_Status</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>Create_Case</functionName>
+    </genAiFunctions>
+    <genAiPluginInstructions>
+        <description>Use straightforward language
+Be Polite , Don&apos;t use harsh words
+Don&apos;t be biased for any gender</description>
+        <developerName>instruction_usestraigh0</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_usestraigh0</masterLabel>
+    </genAiPluginInstructions>
+    <language>en_US</language>
+    <masterLabel>General Enquiry</masterLabel>
+    <pluginType>Topic</pluginType>
+    <scope>Your job is to use actions defined to answer citizen queries.</scope>
+</GenAiPlugin>

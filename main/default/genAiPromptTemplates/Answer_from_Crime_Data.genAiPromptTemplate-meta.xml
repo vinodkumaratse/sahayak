@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>xm1Z2VvwAbp4tLGKVqaDzX8bPPYeLv5X2v4CB0AKo+A=_2</activeVersionIdentifier>
+    <developerName>Answer_from_Crime_Data</developerName>
+    <masterLabel>Answer from Crime Data</masterLabel>
+    <templateVersions>
+        <content>##Input##
+{!$Input:Query}
+
+##Context##
+{!$Flow:Get_Crime_Data.Prompt}
+</content>
+        <inputs>
+            <apiName>Query</apiName>
+            <definition>primitive://String</definition>
+            <referenceName>Input:Query</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>RetrieverIdOrName</apiName>
+            <definition>primitive://String</definition>
+            <referenceName>Input:RetrieverIdOrName</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>flow://Get_Crime_Data</definition>
+            <referenceName>Flow:Get_Crime_Data</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>xm1Z2VvwAbp4tLGKVqaDzX8bPPYeLv5X2v4CB0AKo+A=_1</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>##Input##
+{!$Input:Query}
+
+##Context##
+You are an expert analysist who can read data and summarize it. Following is list of data provided for all crimes registered in Bangalore different areas or zones in last 5 years. It includes FIR/Cases opened/closed along with crime &amp; weapon details. Also Victim details mentioned briefly.
+{!$Flow:Get_Crime_Data.Prompt}
+</content>
+        <inputs>
+            <apiName>Query</apiName>
+            <definition>primitive://String</definition>
+            <referenceName>Input:Query</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>RetrieverIdOrName</apiName>
+            <definition>primitive://String</definition>
+            <referenceName>Input:RetrieverIdOrName</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>flow://Get_Crime_Data</definition>
+            <referenceName>Flow:Get_Crime_Data</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>xm1Z2VvwAbp4tLGKVqaDzX8bPPYeLv5X2v4CB0AKo+A=_2</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__knowledgeAnswers</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>
